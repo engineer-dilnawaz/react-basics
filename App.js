@@ -22,6 +22,19 @@ const parent = React.createElement("div", { id: "parent" }, [
   ]),
 ]);
 
+const jsxHeading = [
+  <h1 className="heading" tabIndex="3">
+    Hello World from JSX
+  </h1>,
+  <h1 className="heading" tabIndex="3">
+    Hello World from JSX
+  </h1>,
+];
+
+const Heading = () => {
+  return jsxHeading;
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(<Heading />);
