@@ -28,9 +28,12 @@ const About = () => {
   }
 
   return (
-    <div>
-      <h1>About Us</h1>
-      <div className="user-list">
+    <div className="p-4">
+      <p className="font-bold text-4xl text-center font-serif">
+        About Our Team
+      </p>
+      <div className="w-full h-[0.5px] bg-gray-200 my-4" />
+      <div className="flex flex-col gap-2">
         {userList.map((user) => {
           return <User key={user.id} userInfo={user} />;
         })}

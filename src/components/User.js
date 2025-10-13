@@ -2,17 +2,16 @@ import { useEffect } from "react";
 
 const User = ({ userInfo }) => {
   return (
-    <div className="user-info">
-      <div className="user-avatar-container">
-        <div className="avatar-container">
-          <img src={userInfo.image} className="user-avatar" />
-        </div>
-        <div>
-          <p className="full-name">{`${userInfo?.firstName} ${userInfo.lastName}`}</p>
-          <p className="username">@{userInfo.username}</p>
-        </div>
+    <div className="bg-gray-200 px-4 py-5 flex items-center gap-3 rounded-md">
+      <div className="bg-white rounded-full flex justify-center items-center p-4">
+        <img src={userInfo.image} className="w-15 h-15" />
       </div>
-      <div className="divider"></div>
+      <div>
+        <p className="font-bold text-slate-900 m-0 text-lg/tight">{`${userInfo?.firstName} ${userInfo.lastName}`}</p>
+        <p className="m-0 text-gray-600 p-0 text-sm/tight">
+          @{userInfo.username}
+        </p>
+      </div>
     </div>
   );
 };
