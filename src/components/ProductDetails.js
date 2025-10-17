@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useProductDetails } from "../utils/useProductDetails";
+import Accordion from "./Accordion";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -11,7 +12,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-cente mb-12">
       {currentThumbnail ? (
         <div className="bg-gray-50 w-full flex justify-center items-center">
           <img
@@ -20,7 +21,8 @@ const ProductDetails = () => {
           />
         </div>
       ) : null}
-      <div className="flex items-center gap-3 my-3.5">
+
+      <div className="flex flex-1 items-center justify-center gap-3 my-3.5 ">
         {details?.images?.map((image, index) => {
           return (
             <img
@@ -34,10 +36,15 @@ const ProductDetails = () => {
         })}
       </div>
       <div className="w-full h-[0.5px] bg-gray-200 my-4" />
-      <h3 className="font-bold mb-4 text-3xl">{details?.title}</h3>
-      <p className="font-normal text-lg text-gray-600">
-        {details?.description}
-      </p>
+      <div className="px-4">
+        <h3 className="font-bold mb-4 text-3xl text-center">
+          {details?.title}
+        </h3>
+        <p className="font-normal text-lg text-gray-600 text-center">
+          {details?.description}
+        </p>
+        <Accordion reviews={details?.reviews ?? []} />
+      </div>
     </div>
   );
 };

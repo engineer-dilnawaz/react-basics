@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import RestaurantCard from "./RestaurantCard";
-import BodyShimmer from "./BodyShimmer";
-import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import BodyShimmer from "./BodyShimmer";
+import RestaurantCard from "./RestaurantCard";
+import withProductCard from "./withProductCard";
 
 let clonedProductList = [];
 
@@ -24,14 +24,21 @@ const Body = () => {
     try {
       const response = await fetch("https://dummyjson.com/products?limit=0");
       const data = await response.json();
-      clonedProductList = [...data.products];
-      setProductList(data.products);
+
+      const _data = data.products.map((item, index) => ({
+        ...item,
+        promoted: index % 2 === 0,
+      }));
+      clonedProductList = [..._data];
+      setProductList(_data);
     } catch (error) {
       console.log("Error: ", error);
     } finally {
       setIsLoading(false);
     }
   };
+
+  const EnhancedComponent = withProductCard(RestaurantCard);
 
   if (!isOnline) {
     return (
@@ -143,7 +150,7 @@ const Body = () => {
           <h2>No products found 😓</h2>
         ) : (
           productList.map((item) => (
-            <RestaurantCard key={item.id} item={item} />
+            <EnhancedComponent key={item.id} item={item} />
           ))
         )}
       </div>

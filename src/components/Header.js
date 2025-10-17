@@ -7,10 +7,10 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   return (
-    <div className="flex justify-between items-center  shadow sticky top-0 backdrop-blur-2xl">
-      <div className="logo-container">
+    <div className="flex justify-between items-center  shadow sticky top-0 backdrop-blur-2xl z-40">
+      <Link to="/" className="logo-container">
         <img src={Logo} alt="Foodie app" className="w-25" />
-      </div>
+      </Link>
 
       <ul className="flex gap-2 pr-10">
         <li className="bg-stone-300 px-4 py-0.5 rounded-lg text-stone-600 cursor-pointer hover:bg-stone-600 hover:text-white hover:scale-[1.05] transition-all">
