@@ -6,6 +6,7 @@ const RestaurantCard = (props) => {
 
   return (
     <Link
+      data-testid="prodCard"
       to={`/product/${item.id}`}
       className="bg-slate-50 px-3 py-2 rounded-md "
     >

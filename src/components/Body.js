@@ -62,6 +62,7 @@ const Body = () => {
             placeholder="Filter out products"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            data-testid="searchInput"
           />
           <button
             className="bg-indigo-500 px-3 py-1.5 rounded-md text-white text font-medium cursor-pointer hover:bg-indigo-600"

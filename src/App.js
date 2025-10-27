@@ -8,16 +8,23 @@ import Body from "./components/Body";
 // import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ProductDetails from "./components/ProductDetails";
+import UserContextProvider from "./contexts/UserContext";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const About = lazy(() => import("./components/About"));
 const Contact = lazy(() => import("./components/Contact"));
 
 const App = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        <UserContextProvider>
+          <Header />
+          <Outlet />
+        </UserContextProvider>
+      </div>
+    </Provider>
   );
 };
 
